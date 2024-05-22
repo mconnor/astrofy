@@ -1,12 +1,21 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import SideBar from "../components/SideBar.astro";
-import { ViewTransitions } from "astro:transitions";
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SideBar from '../components/SideBar.astro';
+import { ViewTransitions } from 'astro:transitions';
 
-import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../config";
+import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from '../config';
 
+interface Props {
+  image?: string;
+  title?: string;
+  description?: string;
+  includeSidebar?: boolean;
+  sideBarActiveItemID?: string;
+  ogType?: string;
+  children: any;
+}
 const {
   image,
   title = SITE_TITLE,
@@ -20,7 +29,13 @@ const {
 <!doctype html>
 <html lang="en" data-theme="lofi">
   <head>
-    <BaseHead title={title} description={description} image={image} , ogType={ogType} />
+    <BaseHead
+      title={title}
+      description={description}
+      image={image}
+      ,
+      ogType={ogType}
+    />
     {TRANSITION_API && <ViewTransitions />}
   </head>
   <body>

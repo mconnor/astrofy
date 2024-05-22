@@ -2,19 +2,31 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import HorizontalShopItem from '../../components/HorizontalShopItem.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+// import type { StoreSchema } from 'src/content/config';
 
 interface Props {
-  page: CollectionEntry<'store'>;
+  page: {
+    url: Record<'prev' | 'next', string>;
+    data: CollectionEntry<'store'>[];
+  };
 }
 
 export async function getStaticPaths({ paginate }) {
   const items = await getCollection('store');
-  items.sort(
+  const sortedArr = items.sort(
     (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf(),
   );
-  return paginate(items, { pageSize: 10 });
+  // return arr.map((post) => {
+  //   return {
+  //     params: { id: post.id, pageSize: 10  },
+  //     props: { post }
+  //   };
+  // });
+  return paginate(sortedArr, { pageSize: 10 });
 }
+
 const { page } = Astro.props;
+// const {data}: {data:  }= page;
 ---
 
 <BaseLayout title="Store" sideBarActiveItemID="store">
@@ -30,8 +42,6 @@ const { page } = Astro.props;
             oldPricing={data.oldPricing}
             checkoutUrl={data.checkoutUrl}
             badge={data.badge}
-            details={data.details}
-            tags={data.tags}
             url={'/store/' + slug}
             custom_link={data.custom_link}
             custom_link_label={data.custom_link_label}
