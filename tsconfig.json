@@ -1,6 +1,7 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "verbatimModuleSyntax": true,
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
@@ -11,5 +12,10 @@
         "src/layouts/*"
       ]
     }
-  }
+  },
+  "include": [
+    "src/**/*.astro",
+    "src/**/*.js",
+    "src/**/*.ts"
+  ]
 }
