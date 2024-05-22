@@ -58,11 +58,11 @@ export default tseslint.config(
     },
     rules: {
       // In some cases, using explicit letter-casing is more performant than the `i` flag
-      'regexp/use-ignore-case': 'off',
+      // 'regexp/use-ignore-case': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
       '@typescript-eslint/no-duplicate-type-constituents': 'warn',
       '@typescript-eslint/unbound-method': 'warn',
-      'wc/no-constructor-attributes': 'off',
+      // 'wc/no-constructor-attributes': 'off',
     },
   },
   {
