@@ -17,13 +17,13 @@
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.13.3",
-    "daisyui": "^4.4.10",
-    "dayjs": "^1.11.9",
-    "sharp": "^0.32.6",
-    "tailwindcss": "^3.3.5"
+    "daisyui": "^4.12.10",
+    "dayjs": "^1.11.12",
+    "sharp": "^0.33.4",
+    "tailwindcss": "^3.4.9"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10"
+    "@tailwindcss/typography": "^0.5.14"
   },
   "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf"
 }
