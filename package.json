@@ -8,7 +8,9 @@
     "#layouts/*.astro": "./src/layouts/*.astro",
     "#components/*.astro": "./src/components/*.astro",
     "#lib/*": "./src/lib/*.ts",
-    "#config": "./src/config.mts"
+    "#config": "./src/config.mts",
+    "#content": "./src/content/config.ts",
+    "#globalStyle": "./src/styles/global.css"
   },
   "scripts": {
     "dev": "astro dev",
@@ -19,10 +21,6 @@
     "lint": "eslint",
     "fix": "eslint --fix",
     "format": "prettier --write ."
-  },
-  "exports": {
-    "./components/*": "./src/components/*",
-    "./layouts/*": "./src/layouts/*"
   },
   "dependencies": {
     "@astrojs/mdx": "^3.1.3",

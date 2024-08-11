@@ -1,5 +1,24 @@
 ---
-const { title, img, desc, url, badge, tags, target = '_blank' } = Astro.props;
+interface Props {
+  title: string;
+  img?: string;
+  desc?: string;
+  badge?: string;
+  url?: string;
+  tags?: string[];
+  target?: string;
+}
+
+const {
+  title,
+  img = '/post_img.webp',
+  desc = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  url = '#',
+  badge,
+  tags,
+  target = '_blank',
+} = Astro.props;
+
 import { Image } from 'astro:assets';
 const tag_url = url.split('/').slice(0, -1).join('/') + '/tag';
 ---

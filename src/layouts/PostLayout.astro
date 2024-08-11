@@ -1,10 +1,13 @@
 ---
-import { type BlogSchema } from '../content/config';
-import BaseLayout from '#Layouts/BaseLayout.astro';
+import { type BlogSchema } from '#content/config';
+
+import BaseLayout from '#layouts/BaseLayout.astro';
 import dayjs from 'dayjs';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 
-export interface Props extends BlogSchema {}
+type Props = {
+  children: unknown;
+} & BlogSchema;
 
 const {
   title,
@@ -15,6 +18,7 @@ const {
   badge,
   tags = [],
 } = Astro.props;
+
 dayjs.extend(localizedFormat);
 const displayDate = dayjs(pubDate).format('ll');
 import { Image } from 'astro:assets';

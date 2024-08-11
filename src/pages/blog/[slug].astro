@@ -1,7 +1,7 @@
 ---
 import { CollectionEntry, getCollection } from 'astro:content';
-import { BlogSchema } from '../../content/config';
-import PostLayout from '../../layouts/PostLayout.astro';
+import { BlogSchema } from '#content/config';
+import PostLayout from '#layouts/PostLayout.astro';
 import createSlug from '#lib/createSlug';
 
 export async function getStaticPaths() {
