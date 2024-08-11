@@ -1,4 +1,17 @@
 ---
+interface Props {
+  title: string;
+  img?: string;
+  desc: string;
+  pricing?: string;
+  oldPricing?: string;
+  checkoutUrl?: string;
+  badge?: string;
+  url: string;
+  custom_link?: string;
+  custom_link_label: string;
+}
+
 const {
   title,
   img,
@@ -8,7 +21,7 @@ const {
   pricing,
   oldPricing,
   checkoutUrl,
-  details = true,
+
   custom_link = false,
   custom_link_label = '',
 } = Astro.props;

@@ -4,5 +4,8 @@
     "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
     "editor.formatOnType": false
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   }
 }

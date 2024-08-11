@@ -1,10 +1,12 @@
 ---
-import { type StoreSchema } from '#content/config';
+import { type StoreSchema } from '#contentConfig';
 import BaseLayout from '#layouts/BaseLayout.astro';
-import dayjs from 'dayjs';
-import localizedFormat from 'dayjs/plugin/localizedFormat';
+// import dayjs from 'dayjs';
+// import localizedFormat from 'dayjs/plugin/localizedFormat';
 
-interface Props extends StoreSchema {}
+interface Props extends StoreSchema {
+  children: unknown;
+}
 
 const {
   title,
@@ -19,8 +21,8 @@ const {
   custom_link_label,
 } = Astro.props;
 
-dayjs.extend(localizedFormat);
-const displayDate = dayjs(updatedDate).format('ll');
+// dayjs.extend(localizedFormat);
+// const displayDate = dayjs(updatedDate).format('ll');
 import { Image } from 'astro:assets';
 ---
 

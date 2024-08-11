@@ -2,5 +2,16 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "strictNullChecks": true
-  }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    ".vercel",
+    ".astro",
+    "dist",
+    ".vscode",
+    ".frontmatter",
+    ".turbo",
+  ]
 }
