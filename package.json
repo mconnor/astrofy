@@ -15,7 +15,10 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "eslint",
+    "fix": "eslint --fix",
+    "format": "prettier --write ."
   },
   "exports": {
     "./components/*": "./src/components/*",
@@ -35,8 +38,13 @@
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@tailwindcss/typography": "^0.5.14",
+    "astro-eslint-parser": "^1.0.2",
     "eslint": "9.x",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-astro": "^1.2.3",
     "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.1"
   },
