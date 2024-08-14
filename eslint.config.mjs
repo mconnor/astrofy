@@ -11,18 +11,26 @@ const config = tseslint.config(
   ...tseslint.configs.recommended,
   ...tseslint.configs.stylistic,
   ...astro.configs.recommended,
+  // {
+  //   languageOptions: {
+  //     parserOptions: {
+  //       projectService: true,
+  //       tsconfigRootDir: import.meta.dirname,
+  //     },
+  //   },
+  // },
 
   {
     languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-
+      // ecmaVersion: 'latest',
+      // sourceType: 'module',
+      parser: tseslint.parser,
       parserOptions: {
-        projectServices: '/tsconfig.eslint.json',
+        // projectService: true,
+        // tsconfigRootDir: import.meta.dirname,
+        project: true,
 
-        // For example, if you use a specific tsconfig.eslint.json for linting, you'd specify:
-
-        parser: tseslint.parser,
+        // parser: tseslint.parser,
         ecmaFeatures: {
           jsx: true,
         },
@@ -39,6 +47,12 @@ const config = tseslint.config(
 
     languageOptions: {
       parser: astroParser,
+      parserOptions: {
+        project: true,
+        extraFileExtensions: ['.astro'],
+        // projectService: true,
+        // tsconfigRootDir: import.meta.dirname,
+      },
     },
 
     rules: {
@@ -46,7 +60,8 @@ const config = tseslint.config(
     },
   },
 
-  { ignores: ['dist', '.astro', '**/*.d.ts', '*.cjs', '*rss.xml.js'] },
+  { ignores: ['dist', '.astro', '*.cjs', '*rss.xml.js', 'src/env.d.ts'] },
+  eslintConfigPrettier,
 );
 
-export default [...config, eslintConfigPrettier];
+export default config;

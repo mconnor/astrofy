@@ -7,13 +7,23 @@ import { ViewTransitions } from 'astro:transitions';
 
 import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from '#config';
 
+interface Props {
+  sideBarActiveItemID?: string;
+  image?: string;
+  title?: string;
+  description?: string;
+  includeSidebar?: boolean;
+  ogType?: string;
+  children?: unknown;
+}
+
 const {
-  image,
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
   includeSidebar = true,
-  sideBarActiveItemID,
-  ogType,
+  sideBarActiveItemID = 'needsID',
+  image = '/social_img.webp',
+  ogType = 'website',
 } = Astro.props;
 ---
 
