@@ -13,9 +13,10 @@
     "check": "astro check",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "inspect": "eslint  --inspect-config",
     "lint": "eslint",
     "fix": "eslint --fix",
     "format": "prettier --write ."
