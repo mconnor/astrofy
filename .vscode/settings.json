@@ -39,9 +39,7 @@
         },
         {
           "name": "{{kebab name}}.scss",
-          "content": [
-            ".{{kebab className}} {}"
-          ]
+          "content": [".{{kebab className}} {}"]
         }
       ]
     }

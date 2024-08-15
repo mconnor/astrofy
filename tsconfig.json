@@ -1,19 +1,8 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    "strictNullChecks": true,
-    "rootDir": "."
+    "strictNullChecks": true
   },
-  "include": [
-    "src",
-    "*.config.*"
-  ],
-  "exclude": [
-    ".vercel",
-    ".astro",
-    "dist",
-    ".vscode",
-    ".frontmatter",
-    ".turbo"
-  ]
+  "include": ["src", "*.config.*", "jsx.d.ts"],
+  "exclude": [".vercel", ".astro", "dist", ".vscode", ".frontmatter", ".turbo"]
 }

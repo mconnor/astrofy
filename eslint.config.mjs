@@ -1,25 +1,17 @@
 // @ts-check
 import astroParser from 'astro-eslint-parser';
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import astro from 'eslint-plugin-astro';
 
 const config = tseslint.config(
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.stylistic,
+  js.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
   ...astro.configs.recommended,
-  // {
-  //   languageOptions: {
-  //     parserOptions: {
-  //       projectService: true,
-  //       tsconfigRootDir: import.meta.dirname,
-  //     },
-  //   },
-  // },
-
+  eslintConfigPrettier,
   {
     languageOptions: {
       // ecmaVersion: 'latest',
@@ -40,11 +32,18 @@ const config = tseslint.config(
         ...globals.node,
       },
     },
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-unsafe-argument': 'warn',
+    },
+  },
+  {
+    files: ['*.config.*'],
+    ...tseslint.configs.disableTypeChecked,
   },
   {
     files: ['src/**/*.astro'],
     ...tseslint.configs.disableTypeChecked,
-
     languageOptions: {
       parser: astroParser,
       parserOptions: {
@@ -54,13 +53,24 @@ const config = tseslint.config(
         // tsconfigRootDir: import.meta.dirname,
       },
     },
-
-    rules: {
-      '@typescript-eslint/no-unused-vars': 'off',
-    },
   },
 
-  { ignores: ['dist', '.astro', '*.cjs', '*rss.xml.js', 'src/env.d.ts'] },
+  {
+    ignores: [
+      'dist',
+      '.astro',
+      '*.cjs',
+      '*rss.xml.js',
+      'src/env.d.ts',
+      ' src/components/_Hamburger.astro',
+      'cache-directory/',
+      '*.d.ts',
+      '**/temp.js',
+      '*lock.yaml',
+      '.vercel/',
+      ' test/',
+    ],
+  },
   eslintConfigPrettier,
 );
 
