@@ -4,16 +4,6 @@
     "strictNullChecks": true,
     "rootDir": "."
   },
-  "include": [
-    "src",
-    "*.config.*"
-  ],
-  "exclude": [
-    ".vercel",
-    ".astro",
-    "dist",
-    ".vscode",
-    ".frontmatter",
-    ".turbo"
-  ]
+  "include": ["src", "*.config.*"],
+  "exclude": [".vercel", ".astro", "dist", ".vscode", ".frontmatter", ".turbo"]
 }
