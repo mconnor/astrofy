@@ -48,6 +48,9 @@ importers:
       '@types/eslint-config-prettier':
         specifier: ^6.11.3
         version: 6.11.3
+      '@types/eslint-plugin-markdown':
+        specifier: ^2.0.2
+        version: 2.0.2
       '@types/eslint__js':
         specifier: ^8.42.3
         version: 8.42.3
@@ -736,6 +739,9 @@ packages:
 
   '@types/eslint-config-prettier@6.11.3':
     resolution: {integrity: sha512-3wXCiM8croUnhg9LdtZUJQwNcQYGWxxdOWDjPe1ykCqJFPVpzAKfs/2dgSoCtAvdPeaponcWPI7mPcGGp9dkKQ==}
+
+  '@types/eslint-plugin-markdown@2.0.2':
+    resolution: {integrity: sha512-ImmEw5xBVb9vCaFfQ+5kUcVatUO4XPpTvryAmhpKzalUKhDb3EZmeuHvIUO6E1/WDOTw+/b9qlWsZhxULhZdfQ==}
 
   '@types/eslint@9.6.1':
     resolution: {integrity: sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag==}
@@ -3510,6 +3516,11 @@ snapshots:
       '@types/ms': 0.7.34
 
   '@types/eslint-config-prettier@6.11.3': {}
+
+  '@types/eslint-plugin-markdown@2.0.2':
+    dependencies:
+      '@types/eslint': 9.6.1
+      '@types/unist': 3.0.3
 
   '@types/eslint@9.6.1':
     dependencies:

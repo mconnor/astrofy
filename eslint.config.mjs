@@ -7,22 +7,23 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import astro from 'eslint-plugin-astro';
 
 import markdown from 'eslint-plugin-markdown';
+// import regexp from 'eslint-plugin-regexp';
+// import wc from 'eslint-plugin-wc';
+// import lit from 'eslint-plugin-lit';
 
 const config = tseslint.config(
   js.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.stylistic,
   ...astro.configs.recommended,
-
+  // regexp.configs['flat/recommended'],
+  // wc.configs['flat/recommended'],
+  // lit.configs['flat/recommended'],
   {
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
       parser: tseslint.parser,
-      parserOptions: {
-        project: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
       globals: {
         ...globals.browser,
         ...globals.node,
@@ -31,14 +32,11 @@ const config = tseslint.config(
   },
   {
     files: ['**/*.astro'],
-
     languageOptions: {
       parser: astroParser,
       parserOptions: {
         extraFileExtensions: ['.astro'],
         parser: tseslint.parser,
-        project: true,
-        tsconfigRootDir: import.meta.dirname,
         ecmaFeatures: {
           jsx: true,
         },
