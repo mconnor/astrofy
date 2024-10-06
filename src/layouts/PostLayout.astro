@@ -50,15 +50,14 @@ import { Image } from 'astro:assets';
       <br />
       {badge && <div class="badge badge-secondary my-1">{badge}</div>}
       {
-        tags &&
-          tags.map((tag) => (
-            <a
-              href={`/blog/tag/${tag}`}
-              class="badge badge-outline ml-2 no-underline"
-            >
-              {tag}
-            </a>
-          ))
+        tags?.map((tag) => (
+          <a
+            href={`/blog/tag/${tag}`}
+            class="badge badge-outline ml-2 no-underline"
+          >
+            {tag}
+          </a>
+        ))
       }
       {
         updatedDate && (

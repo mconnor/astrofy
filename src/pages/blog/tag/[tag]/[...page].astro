@@ -12,7 +12,7 @@ export async function getStaticPaths({
 }) {
   const all_posts = await getCollection('blog');
   const all_tags = all_posts.flatMap((post) => {
-    return post.data.tags || [];
+    return post.data.tags ?? [];
   });
 
   return all_tags.flatMap((tag) => {

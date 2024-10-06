@@ -1,39 +1,27 @@
 // @ts-check
 import astroParser from 'astro-eslint-parser';
 import globals from 'globals';
-import pluginJs from '@eslint/js';
+import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import astro from 'eslint-plugin-astro';
 
+import markdown from 'eslint-plugin-markdown';
+
 const config = tseslint.config(
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.stylistic,
+  js.configs.recommended,
+  ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
   ...astro.configs.recommended,
-  // {
-  //   languageOptions: {
-  //     parserOptions: {
-  //       projectService: true,
-  //       tsconfigRootDir: import.meta.dirname,
-  //     },
-  //   },
-  // },
 
   {
     languageOptions: {
-      // ecmaVersion: 'latest',
-      // sourceType: 'module',
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       parser: tseslint.parser,
       parserOptions: {
-        // projectService: true,
-        // tsconfigRootDir: import.meta.dirname,
         project: true,
-
-        // parser: tseslint.parser,
-        ecmaFeatures: {
-          jsx: true,
-        },
+        tsconfigRootDir: import.meta.dirname,
       },
       globals: {
         ...globals.browser,
@@ -42,26 +30,91 @@ const config = tseslint.config(
     },
   },
   {
-    files: ['src/**/*.astro'],
-    ...tseslint.configs.disableTypeChecked,
+    files: ['**/*.astro'],
 
     languageOptions: {
       parser: astroParser,
       parserOptions: {
-        project: true,
         extraFileExtensions: ['.astro'],
-        // projectService: true,
-        // tsconfigRootDir: import.meta.dirname,
+        parser: tseslint.parser,
+        project: true,
+        tsconfigRootDir: import.meta.dirname,
+        ecmaFeatures: {
+          jsx: true,
+        },
       },
     },
-
     rules: {
-      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
     },
   },
 
-  { ignores: ['dist', '.astro', '*.cjs', '*rss.xml.js', 'src/env.d.ts'] },
-  eslintConfigPrettier,
+  {
+    files: ['**/*js'],
+    extends: [tseslint.configs.disableTypeChecked],
+  },
+  {
+    files: [
+      'src/custom-layout-components/astro-wc/**/*js',
+      'src/custom-layout-components/lit-wc/**/*js',
+    ],
+    extends: [tseslint.configs.disableTypeChecked],
+    rules: {
+      'no-unused-expressions': 'off',
+      'wc/no-constructor-attributes': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
+    },
+  },
+  {
+    files: ['src/schemas/**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-unsafe-assignment': 'warn',
+      '@typescript-eslint/no-unsafe-call': 'warn',
+    },
+  },
+
+  {
+    plugins: {
+      markdown,
+    },
+  },
+  {
+    files: ['**/*.md/*.js'],
+    extends: [tseslint.configs.disableTypeChecked],
+    rules: {
+      'no-console': 'warn',
+      'import/no-unresolved': 'warn',
+    },
+  },
+  {
+    linterOptions: {
+      reportUnusedDisableDirectives: 'warn',
+    },
+  },
 );
 
-export default config;
+export default [
+  {
+    ignores: [
+      'stylelint.config.mjs',
+      'dist',
+      '.astro',
+      '*.cjs',
+      '*rss.xml.js',
+      'src/env.d.ts',
+      'src/components/_Hamburger.astro',
+      'cache-directory/',
+      '*.d.ts',
+      '**/temp.js',
+      '*lock.yaml',
+      '.vercel/',
+      ' test/',
+    ],
+  },
+  ...config,
+  eslintConfigPrettier,
+];
