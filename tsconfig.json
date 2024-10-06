@@ -4,16 +4,8 @@
     "strictNullChecks": true,
     "outDir": "dist",
     "rootDir": ".",
-    "esModuleInterop": false,
+    "esModuleInterop": false
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    ".vercel",
-    ".astro",
-    "dist",
-    ".vscode",
-    ".turbo"
-  ]
+  "include": ["src"],
+  "exclude": [".vercel", ".astro", "dist", ".vscode", ".turbo"]
 }
