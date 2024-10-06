@@ -1,3 +1,4 @@
+// .prettierrc.mjs
 /** @type {import("prettier").Config} */
 export default {
   plugins: ['prettier-plugin-astro'],
@@ -6,8 +7,8 @@ export default {
       files: '*.astro',
       options: {
         parser: 'astro',
-        astroAllowShorthand: false,
       },
+      astroAllowShorthand: true,
     },
   ],
   singleQuote: true,
