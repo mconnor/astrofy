@@ -6,9 +6,7 @@
     "outDir": "dist",
   },
   "include": [
-    "src",
-    "*.config.mjs",
-    "*.config.cjs"
+    "src"
   ],
   "exclude": [
     ".vercel",
