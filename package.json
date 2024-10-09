@@ -10,6 +10,7 @@
     "#contentConfig": "./src/content/config.ts"
   },
   "scripts": {
+    "upgrade": "pnpm dlx @astrojs/upgrade",
     "check": "astro check",
     "dev": "astro dev",
     "start": "astro dev",
@@ -18,7 +19,8 @@
     "astro": "astro",
     "lint": "eslint",
     "fix": "eslint --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "info": "astro info"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -26,8 +28,8 @@
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.2.0",
     "@astrojs/tailwind": "^5.1.1",
-    "astro": "^4.15.11",
-    "daisyui": "^4.12.12",
+    "astro": "^4.15.12",
+    "daisyui": "^4.12.13",
     "dayjs": "^1.11.13",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.13"
@@ -43,15 +45,15 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "^1.2.4",
     "eslint-plugin-markdown": "^5.1.0",
-    "globals": "^15.10.0",
+    "globals": "^15.11.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.6.2",
-    "typescript-eslint": "^8.8.0"
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.8.1"
   },
   "engines": {
     "node": ">= 20.11.0 <21 || >= 21.2.0",
     "pnpm": ">=9.1.2"
   },
-  "packageManager": "pnpm@9.12.0"
+  "packageManager": "pnpm@9.12.1"
 }

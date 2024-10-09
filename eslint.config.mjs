@@ -16,6 +16,7 @@ const config = tseslint.config(
   ...tseslint.configs.recommended,
   ...tseslint.configs.stylistic,
   ...astro.configs.recommended,
+  markdown.configs.recommended,
   // regexp.configs['flat/recommended'],
   // wc.configs['flat/recommended'],
   // lit.configs['flat/recommended'],
