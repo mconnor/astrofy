@@ -6,17 +6,17 @@ import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import astro from 'eslint-plugin-astro';
 
-import markdown from 'eslint-plugin-markdown';
+import markdown from '@eslint/markdown';
 // import regexp from 'eslint-plugin-regexp';
 // import wc from 'eslint-plugin-wc';
 // import lit from 'eslint-plugin-lit';
 
 const config = tseslint.config(
   js.configs.recommended,
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.stylistic,
+  ...tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
   ...astro.configs.recommended,
-  markdown.configs.recommended,
+
   // regexp.configs['flat/recommended'],
   // wc.configs['flat/recommended'],
   // lit.configs['flat/recommended'],
@@ -25,6 +25,10 @@ const config = tseslint.config(
       ecmaVersion: 'latest',
       sourceType: 'module',
       parser: tseslint.parser,
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
       globals: {
         ...globals.browser,
         ...globals.node,
@@ -33,11 +37,14 @@ const config = tseslint.config(
   },
   {
     files: ['**/*.astro'],
+
     languageOptions: {
       parser: astroParser,
       parserOptions: {
         extraFileExtensions: ['.astro'],
         parser: tseslint.parser,
+        project: true,
+        tsconfigRootDir: import.meta.dirname,
         ecmaFeatures: {
           jsx: true,
         },
@@ -56,18 +63,7 @@ const config = tseslint.config(
     files: ['**/*js'],
     extends: [tseslint.configs.disableTypeChecked],
   },
-  {
-    files: [
-      'src/custom-layout-components/astro-wc/**/*js',
-      'src/custom-layout-components/lit-wc/**/*js',
-    ],
-    extends: [tseslint.configs.disableTypeChecked],
-    rules: {
-      'no-unused-expressions': 'off',
-      'wc/no-constructor-attributes': 'off',
-      '@typescript-eslint/no-unused-expressions': 'off',
-    },
-  },
+
   {
     files: ['src/schemas/**/*.ts'],
     rules: {
@@ -76,19 +72,15 @@ const config = tseslint.config(
     },
   },
 
-  {
-    plugins: {
-      markdown,
-    },
-  },
-  {
-    files: ['**/*.md/*.js'],
-    extends: [tseslint.configs.disableTypeChecked],
-    rules: {
-      'no-console': 'warn',
-      'import/no-unresolved': 'warn',
-    },
-  },
+  // {
+  //   files: ['**/*.md/*.js'],
+  //   extends: [tseslint.configs.disableTypeChecked],
+  //   rules: {
+  //     'no-console': 'warn',
+  //     'import/no-unresolved': 'warn',
+  //   },
+  // },
+
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'warn',
@@ -96,9 +88,32 @@ const config = tseslint.config(
   },
 );
 
+const mdConfig = [
+  {
+    // Apply the Markdown processor to all .md files
+    files: ['**/*.md'],
+    plugins: {
+      markdown,
+    },
+    processor: 'markdown/markdown', // Lint fenced code blocks in Markdown
+    language: 'markdown/commonmark', // Or use "markdown/gfm" for GitHub-Flavored Markdown
+    rules: {
+      // Markdown rules
+      'markdown/fenced-code-language': 'warn', // Enforce language specification in fenced code blocks
+      'markdown/heading-increment': 'error', // Ensure heading levels increment by one
+      'markdown/no-duplicate-headings': 'warn', // Disallow duplicate headings in the same document
+      'markdown/no-empty-links': 'warn', // Disallow empty link elements
+      'markdown/no-html': 'error', // Disallow HTML in Markdown
+      'markdown/no-invalid-label-refs': 'error', // Disallow invalid label references
+      'markdown/no-missing-label-refs': 'error', // Disallow missing label references
+    },
+  },
+];
+
 export default [
   {
     ignores: [
+      'README.md',
       'stylelint.config.mjs',
       'dist',
       '.astro',
@@ -114,6 +129,8 @@ export default [
       ' test/',
     ],
   },
+
+  ...mdConfig,
   ...config,
   eslintConfigPrettier,
 ];

@@ -7,7 +7,12 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://astrofy-template.netlify.app',
+  outDir: 'dist',
   output: 'static',
   integrations: [mdx(), sitemap(), tailwind()],
+  markdown: {
+    // Can be 'shiki' (default), 'prism' or false to disable highlighting
+    syntaxHighlight: 'shiki',
+  },
   // adapter: vercel(),
 });
