@@ -2,8 +2,11 @@
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "strictNullChecks": true,
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "baseUrl": ".",
     "rootDir": ".",
-    "outDir": "dist",
+    "outDir": "./dist",
   },
   "include": [
     "src"

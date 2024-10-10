@@ -1,47 +1,59 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[astro][javascript][javascriptreact][typescript][markdown][typescriptreact]": {
-    "editor.formatOnPaste": false,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": false
-  },
-  "[dotenv]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "astro", // Enable .astro
-    "typescript", // Enable .ts
-    "typescriptreact" // Enable .tsx
+  "editor.inlayHints.enabled": "on",
+  "workbench.colorTheme": "Visual Studio Dark",
+  "terminal.integrated.scrollback": 10000,
+  // Do not ignore node_modules css files, which is ignored by default
+  "cssvar.themes": [
+    "auto",
+    "toucan",
+    "dark",
+    "light",
+    "dim",
+    "choco",
+    "grape"
   ],
-  "module-templates.engine": "handlebars",
-  "module-templates.templates": {
-    "react-component": {
-      "displayName": "React component",
-      "defaultPath": "source/components",
-      "folder": "{{kebab name}}",
-      "questions": {
-        "name": "Component name",
-        "className": "HTML class name"
-      },
-      "files": [
-        {
-          "name": "{{kebab name}}.jsx",
-          "content": [
-            "import React from 'react';",
-            "",
-            "const {{pascal name}} = () =>",
-            "  <div className=\"{{kebab className}}\" />",
-            "",
-            "export default {{pascal name}};"
-          ]
-        },
-        {
-          "name": "{{kebab name}}.scss",
-          "content": [".{{kebab className}} {}"]
-        }
-      ]
+  "cssvar.enable": true,
+  // Since we want to scan css files inside `node_modules as well
+  // we need to set cssvar.ignore property to empty array
+  "cssvar.ignore": [],
+  "cssvar.excludeThemedVariables": true,
+  // add support for autocomplete in JS or JS like files
+  /**
+   * This setting controls whether inlay hints are enabled in the editor.
+   * Inlay hints are small pieces of information displayed inline with the code,
+   * providing additional context or details about the code.
+   *
+   * Possible values:
+   * - "off": Inlay hints are disabled.
+   * - "on": Inlay hints are enabled.
+   * - "off": Inlay hints are disabled.
+   */
+  "cssvar.files": [
+    "./src/styles/**/*css",
+    "./node_modules/open-props/open-props.min.css"
+    // if you have an alternative path to where your styles are located
+    // you can add it in this array of files
+    // "assets/styles/variables.css"
+  ],
+  "cssvar.extensions": [
+    "css",
+    "postcss",
+    "jsx",
+    "tsx",
+    "astro"
+  ],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vitest.disableWorkspaceWarning": true,
+  "explorer.excludeGitIgnore": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "/src/content/authors/**"
+      ],
+      "url": "./.astro/collections/authors.schema.json"
     }
-  }
+  ]
 }

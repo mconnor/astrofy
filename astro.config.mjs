@@ -6,8 +6,8 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astrofy-template.netlify.app',
-  outDir: 'dist',
+  outDir: './dist',
+  cacheDir: './my-custom-cache-directory',
   output: 'static',
   integrations: [mdx(), sitemap(), tailwind()],
   markdown: {
