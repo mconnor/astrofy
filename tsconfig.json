@@ -11,6 +11,7 @@
   "exclude": [
     ".vercel",
     ".astro",
+    ".github",
     "dist",
     ".vscode",
     ".turbo"

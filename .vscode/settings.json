@@ -18,33 +18,4 @@
     "typescript", // Enable .ts
     "typescriptreact" // Enable .tsx
   ],
-  "module-templates.engine": "handlebars",
-  "module-templates.templates": {
-    "react-component": {
-      "displayName": "React component",
-      "defaultPath": "source/components",
-      "folder": "{{kebab name}}",
-      "questions": {
-        "name": "Component name",
-        "className": "HTML class name"
-      },
-      "files": [
-        {
-          "name": "{{kebab name}}.jsx",
-          "content": [
-            "import React from 'react';",
-            "",
-            "const {{pascal name}} = () =>",
-            "  <div className=\"{{kebab className}}\" />",
-            "",
-            "export default {{pascal name}};"
-          ]
-        },
-        {
-          "name": "{{kebab name}}.scss",
-          "content": [".{{kebab className}} {}"]
-        }
-      ]
-    }
-  }
 }

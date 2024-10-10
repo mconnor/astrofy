@@ -7,5 +7,11 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://astrofy-template.netlify.app',
   output: 'static',
+  outDir: './dist',
   integrations: [mdx(), sitemap(), tailwind()],
+  vite: {
+    ssr: {
+      noExternal: ['package-name'],
+    },
+  },
 });
