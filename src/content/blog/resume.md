@@ -9,11 +9,7 @@ tags: ['rust', 'tokio']
 
 # MarieFrance Yoder
 
-323 W 8th St<br>
 Kansas City, MO 64105
-
-<!-- [mariefrancevanae@gmail.com](mailto:mariefrancevanae@gmail.com)<br>
-Phone: 816-372-3708 -->
 
 ---
 
