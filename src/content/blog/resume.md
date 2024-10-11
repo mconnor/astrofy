@@ -2,7 +2,7 @@
 title: 'MarieFrance Yoder'
 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 pubDate: 'Oct 6 2024'
-heroImage: '/post_img.webp'
+heroImage: '/kcmo.webp'
 badge: 'Demo badge'
 tags: ['rust', 'tokio']
 ---
@@ -12,8 +12,8 @@ tags: ['rust', 'tokio']
 323 W 8th St<br>
 Kansas City, MO 64105
 
-[mariefrancevanae@gmail.com](mailto:mariefrancevanae@gmail.com)<br>
-Phone: 816-372-3708
+<!-- [mariefrancevanae@gmail.com](mailto:mariefrancevanae@gmail.com)<br>
+Phone: 816-372-3708 -->
 
 ---
 
