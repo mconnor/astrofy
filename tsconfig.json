@@ -3,17 +3,8 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "outDir": "dist",
-    "rootDir": ".",
+    "rootDir": "."
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    ".vercel",
-    ".astro",
-    ".github",
-    "dist",
-    ".vscode",
-    ".turbo"
-  ]
+  "include": ["**/*"],
+  "exclude": [".vercel", ".astro", ".github", "dist", ".vscode", ".turbo"]
 }
