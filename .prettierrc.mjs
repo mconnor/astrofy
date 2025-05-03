@@ -1,17 +1,18 @@
 // .prettierrc.mjs
 /** @type {import("prettier").Config} */
-export default {
-  plugins: ['prettier-plugin-astro'],
+const config = {
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
+  tailwindStylesheet: './src/styles/global.css',
   overrides: [
     {
       files: '*.astro',
       options: {
         parser: 'astro',
       },
-      astroAllowShorthand: true,
     },
   ],
   singleQuote: true,
-  trailingComma: 'all',
-  tabWidth: 2,
+  experimentalTernaries: true,
 };
+
+export default config;
