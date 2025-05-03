@@ -32,16 +32,15 @@ const params = Astro.params;
 
 <BaseLayout title={'Blog - ' + params.tag} sideBarActiveItemID="blog">
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Blog - {params.tag}</div>
+    <div class="w-full text-3xl font-bold">Blog - {params.tag}</div>
   </div>
   {
-    page.data.length === 0 ? (
-      <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
+    page.data.length === 0 ?
+      <div class="w-full min-w-full border-l-4 border-secondary bg-base-200 p-4">
         <p class="font-bold">Sorry!</p>
         <p>There are no blog posts to show at the moment. Check back later!</p>
       </div>
-    ) : (
-      <ul>
+    : <ul>
         {page.data.map((post) => (
           <>
             <HorizontalCard
@@ -57,13 +56,12 @@ const params = Astro.params;
           </>
         ))}
       </ul>
-    )
   }
 
   <div class="flex justify-between">
     {
-      page.url.prev ? (
-        <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
+      page.url.prev ?
+        <a href={page.url.prev} class="btn btn-ghost mx-5 my-10">
           {' '}
           <svg
             class="h-6 w-6 fill-current md:h-8 md:w-8"
@@ -76,13 +74,11 @@ const params = Astro.params;
           </svg>{' '}
           Recent posts
         </a>
-      ) : (
-        <div />
-      )
+      : <div />
     }
     {
-      page.url.next ? (
-        <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
+      page.url.next ?
+        <a href={page.url.next} class="btn btn-ghost mx-5 my-10">
           Older Posts{' '}
           <svg
             class="h-6 w-6 fill-current md:h-8 md:w-8"
@@ -95,9 +91,7 @@ const params = Astro.params;
             <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
           </svg>
         </a>
-      ) : (
-        <div />
-      )
+      : <div />
     }
   </div>
 </BaseLayout>

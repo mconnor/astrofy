@@ -49,8 +49,8 @@ const { data } = page;
 
   <div class="flex justify-between">
     {
-      page.url.prev ? (
-        <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
+      page.url.prev ?
+        <a href={page.url.prev} class="btn btn-ghost mx-5 my-10">
           {' '}
           <svg
             class="h-6 w-6 fill-current md:h-8 md:w-8"
@@ -63,13 +63,11 @@ const { data } = page;
           </svg>{' '}
           Previous page
         </a>
-      ) : (
-        <div />
-      )
+      : <div />
     }
     {
-      page.url.next ? (
-        <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
+      page.url.next ?
+        <a href={page.url.next} class="btn btn-ghost mx-5 my-10">
           Next page{' '}
           <svg
             class="h-6 w-6 fill-current md:h-8 md:w-8"
@@ -82,9 +80,7 @@ const { data } = page;
             <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
           </svg>
         </a>
-      ) : (
-        <div />
-      )
+      : <div />
     }
   </div>
 </BaseLayout>
