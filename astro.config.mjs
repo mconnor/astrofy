@@ -9,9 +9,4 @@ export default defineConfig({
   output: 'static',
   outDir: './dist',
   integrations: [sitemap(), tailwind()],
-  vite: {
-    ssr: {
-      noExternal: ['package-name'],
-    },
-  },
 });
